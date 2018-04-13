@@ -6,11 +6,9 @@ def total_cash(cash)
   return cash[:admin][:total_cash]
 end
 
-# def add_or_remove_cash(pet_shop, cash)
-#   current_cash = pet_shop[:admin][:total_cash]
-#   revised_cash = current_cash + cash
-#   return revised_cash
-# end
+def add_or_remove_cash(pet_shop, cash)
+  pet_shop[:admin][:total_cash] += cash
+end
 
 
 def pets_sold(sold)
@@ -35,4 +33,12 @@ def find_pet_by_name(pet, names)
      end
    end
   return nil
+end
+
+def customer_cash(cash)
+  return cash[:cash]
+end
+
+def customer_pet_count(num_pets)
+  num_pets[:pets].length()
 end
