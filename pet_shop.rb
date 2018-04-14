@@ -31,29 +31,40 @@ end
 def stock_count(stock)
   stock[:pets].length()
 end
-
+#
 # def pets_by_breed(pet_shop, breed)
-#   # total = 0
-#   # for type in pet_shop[:pets]
-#   #     if breed == type[:breed]
-#   #       total +=1
-#   #     end
-#   # end
+#   total = 0
+#   for type in pet_shop[:pets]
+#       if breed == type[:breed]
+#         total +=1
+#       end
+#   end
+#   p total
+#
 #  return total
 # end
 
-# def find_pet_by_name(pet, pet_name)
-#   for name in pet[:pets]
-#      if (pet_name == name[:name])
-#        return name
-#      end
-#    end
-#   return nil
+def find_pet_by_name(pet, pet_name)
+  for name in pet[:pets]
+     if (pet_name == name[:name])
+       #p name  note this is returning the full hash - not sure if this is what is expected
+       return name
+     end
+   end
+   # p pet_name
+  return nil
+end
+
+# def remove_pet_by_name(pet_shop, name)
+#
+#     pet_shop[:pets].delete(name)
+#
+#
 # end
 
 def add_pet_to_stock(pet_shop, pet)
   pet_shop[:pets].push(pet)
-  p pet_shop[:pets]
+  # p pet_shop[:pets]
   pet_shop[:pets].length()
 end
 
@@ -65,10 +76,6 @@ def customer_pet_count(num_pets)
   num_pets[:pets].length()
 end
 
-# def remove_pet_by_name(pet_shop, name)
-#  pet_shop[:pets].delete(name)
-#
-# end
 
 def remove_customer_cash(customer, amount)
  customer[:cash] -= amount
