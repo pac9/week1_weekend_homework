@@ -31,7 +31,7 @@ end
 def stock_count(stock)
   stock[:pets].length()
 end
-#
+
 # def pets_by_breed(pet_shop, breed)
 #   total = 0
 #   for type in pet_shop[:pets]
@@ -44,8 +44,8 @@ end
 #  return total
 # end
 
-def find_pet_by_name(pet, pet_name)
-  for name in pet[:pets]
+def find_pet_by_name(pet_shop, pet_name)
+  for name in pet_shop[:pets]
      if (pet_name == name[:name])
        #p name  note this is returning the full hash - not sure if this is what is expected
        return name
@@ -55,12 +55,16 @@ def find_pet_by_name(pet, pet_name)
   return nil
 end
 
-# def remove_pet_by_name(pet_shop, name)
-#
-#     pet_shop[:pets].delete(name)
-#
-#
-# end
+def remove_pet_by_name(pet_shop, name)
+   # p pet_shop[:pets][:name]
+
+  for pet in pet_shop[:pets]
+    if pet[:name] == name
+        pet_shop[:pets].delete(pet)
+        # p pet_shop[:pets]
+    end
+  end
+end
 
 def add_pet_to_stock(pet_shop, pet)
   pet_shop[:pets].push(pet)
@@ -82,7 +86,60 @@ def remove_customer_cash(customer, amount)
 end
 
 def add_pet_to_customer(customer, pet)
-  customer[:pets].push("Donkey")
+  customer[:pets].push(pet)
   # p customer[:pets]
   customer[:pets].length()
 end
+
+
+#OPTIONAL
+
+def customer_can_afford_pet(customer, amount)
+ # p amount[:price]
+ # p customer[:cash]
+    if amount[:price] <= customer[:cash]
+      return true
+    else
+      return false
+  end
+end
+
+def sell_pet_to_customer(pet_shop, pet_name, customer)
+
+ #  customer[:pets].push(pet_name)
+ #  # p pet_shop[:pets]
+ #  customer[:pets].length()
+ # # p total_cash(pet_shop)
+ #
+ # ncrease_pets_sold(shop, sold)
+ #   shop[:admin][:pets_sold] += sold
+
+   if pet_name[:price] <= customer[:cash]
+     customer[:pets].push(pet_name)
+     # p pet_shop[:pets]
+    customer[:pets].length()
+    # pet_shop[:admin][:pets_sold] +=1
+    # amount = pet_shop[:pets][:price]
+    # customer[:cash] -= amount
+    # p customer[:cash]
+
+ end
+end
+ # p pets_sold(pet_shop)
+ # p customer_pet_count(customer)
+ # p customer_cash(customer)
+ # p find_pet_by_name(pet_shop, pet_name)
+
+ # customer = @customers[0]
+ # pet = find_pet_by_name(@pet_shop,"Arthur")
+ #
+ # sell_pet_to_customer(@pet_shop, pet, customer)
+ # done 1, customer_pet_count(customer))
+ # done 1, pets_sold(@pet_shop))
+ # (100, customer_cash(customer))
+ # (1900, total_cash(@pet_shop))
+# end
+
+# def sell_pet_to_customer(pet_shop, pet_name, customer)
+#
+# end
